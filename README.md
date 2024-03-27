@@ -1,5 +1,3 @@
-# slurm-cluster
-Slurm cluster with containers
 # Slurm Docker Project
 
 This project presents a slurm cluster using docker containers.
@@ -15,11 +13,12 @@ SLURM stands for Simple Linux Utility for Resource Management. It is a open-sour
 
 The compose file will run the following containers:
 
-* mysql
-* slurmdbd    
-* slurmctld   
-* c1 (slurmd) 
-* c2 (slurmd) 
+* mysql     - DB
+
+* slurmdbd  - Single Data base to record accounting information.  
+* slurmctld - Centralized manager that monitor resources and work.   
+* c1 (slurmd) - Compute node runs it to execute jobs
+* c2 (slurmd) - Compute node runs it to execute jobs. 
 
 The compose file will create the following named volumes:
 
@@ -34,6 +33,8 @@ The compose file will create the following named volumes:
 Build the image locally:
 
 ```console
+docker ps
+docker images
 docker rmi -f 27a7f9a9ac17
 docker system prune
 docker build -t slurm-docker-cluster:21.08.6 .
